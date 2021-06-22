@@ -27,7 +27,19 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### Configuration Changes: 
+### Build and Run with Docker
+
+The eCRNow-UI application can also be run using Docker:
+
+```
+./build-docker-image.bat
+docker-compose up
+```
+
+The `docker-compose.yml` file contains environment variable configurations.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Configuration Changes:
 
 File: .env
 
