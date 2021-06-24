@@ -6,7 +6,7 @@ services:
     container_name: ecrnow-ui
     restart: on-failure
     ports:
-      - "3001:3000"
+      - "3001:3000" # Maps to port 3001 since MITRE BSA runs on port 3000
     environment:
       - REACT_APP_ECR_BASE_URL=http://pathways.mitre.org:8081
       - DANGEROUSLY_DISABLE_HOST_CHECK=true
