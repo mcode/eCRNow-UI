@@ -43,7 +43,11 @@ class HealthCareSettings extends Component {
             this.state.restAPIURL= this.selectedHealthCareSettings.restApiUrl;
             this.state.startThreshold = this.selectedHealthCareSettings.encounterStartThreshold;
             this.state.endThreshold = this.selectedHealthCareSettings.encounterEndThreshold;
-
+            this.state.subscriptionsEnabled = this.selectedHealthCareSettings.subscriptionsEnabled;
+            this.state.trustedThirdParty = this.selectedHealthCareSettings.trustedThirdParty;
+            this.state.orgName = this.selectedHealthCareSettings.orgName;
+            this.state.orgIdSystem = this.selectedHealthCareSettings.orgIdSystem;
+            this.state.orgId = this.selectedHealthCareSettings.orgId;
             this.getKARs();
         } else {
             this.state.authType = 'SofProvider';
@@ -190,6 +194,11 @@ class HealthCareSettings extends Component {
             restApiUrl: this.state.restAPIURL ? this.state.restAPIURL : null,
             encounterStartThreshold: this.state.startThreshold,
             encounterEndThreshold: this.state.endThreshold,
+            subscriptionsEnabled: this.state.SubscriptionsEnabled,
+            trustedThirdParty: this.state.trustedThirdParty,
+            orgName: this.state.orgName ? this.state.orgName : null,
+            orgIdSystem: this.state.orgIdSystem,
+            orgId: this.state.orgId,
             lastUpdated:new Date()
         };
         if (!this.addNewHealthCare && this.selectedHealthCareSettings) {
@@ -342,7 +351,7 @@ class HealthCareSettings extends Component {
                                             <Form.Group as={Row} controlId="formHorizontalClientId">
                                                 <Form.Label column sm={2}>
                                                     Launch Type:
-                                    </Form.Label>
+                                                </Form.Label>
                                                 <Col sm={10}>
                                                     <Row>
                                                         <Col sm={4}>
@@ -409,7 +418,45 @@ class HealthCareSettings extends Component {
                                                     </Form.Control.Feedback>
                                                 </Col>
                                             </Form.Group>
+                                            <Form.Group as={Row} controlId="formHorizaontalSubscriptionsEnabled">
+                                                <Form.Label column sm={2}>
+                                                    Subscriptions Enabled:
+                                                </Form.Label>
+                                                <Col sm={10}>
+                                                    <Row>
+                                                        <Col sm={4}>
+                                                            <Form.Check type="checkbox" id="providerLaunch">
+                                                                <Form.Check.Input type="checkbox" value={this.state.subscriptionsEnabled} onChange={e => this.setState( (prevState) => {return {subscriptionsEnabled: !prevState.subscriptionsEnabled}})} />
+                                                            </Form.Check>
+                                                        </Col>
+                                                    </Row>
+                                                </Col>
+                                            </Form.Group>
 
+                                            <Form.Group as={Row} controlId="formHorizontalOrgName">
+                                                        <Form.Label column sm={2}>
+                                                            Org Name:
+                                                        </Form.Label>
+                                                        <Col sm={10}>
+                                                            <Form.Control type="text" placeholder="Organization Name" name="orgName" onChange={e => this.handleChange(e)} value={this.state.orgName || ''}/>
+                                                        </Col>
+                                            </Form.Group>
+                                            <Form.Group as={Row} controlId="formHorizontalOrgIdSystem">
+                                                        <Form.Label column sm={2}>
+                                                            Org ID System:
+                                                        </Form.Label>
+                                                        <Col sm={10}>
+                                                            <Form.Control type="text" placeholder="Organization ID System" name="orgIdSystem" onChange={e => this.handleChange(e)} value={this.state.orgIdSystem || ''}/>
+                                                        </Col>
+                                            </Form.Group>
+                                            <Form.Group as={Row} controlId="formHorizontalOrgId">
+                                                        <Form.Label column sm={2}>
+                                                            Org ID:
+                                                        </Form.Label>
+                                                        <Col sm={10}>
+                                                            <Form.Control type="text" placeholder="Organization ID" name="orgId" onChange={e => this.handleChange(e)} value={this.state.orgId || ''}/>
+                                                        </Col>
+                                            </Form.Group>
                                             {this.state.authType === 'SofSystem' ? (
                                                 <Form.Group as={Row} controlId="formHorizontalTokenURL">
                                                     <Form.Label column sm={2}>
@@ -443,6 +490,14 @@ class HealthCareSettings extends Component {
                                                             <Form.Control.Feedback type="invalid">
                                                                 Please provide Rest API URL.
                                                             </Form.Control.Feedback>
+                                                        </Col>
+                                                    </Form.Group>
+                                                    <Form.Group as={Row} controlId="formHorizontalTrustedThirdParty">
+                                                        <Form.Label column sm={2}>
+                                                            Trusted Third Party URL:
+                                                        </Form.Label>
+                                                        <Col sm={10}>
+                                                            <Form.Control type="text" placeholder="Trusted Third Party" name="trustedThirdParty" onChange={e => this.handleChange(e)} value={this.state.trustedThirdParty || ''}/>
                                                         </Col>
                                                     </Form.Group>
                                         </Card.Body>
