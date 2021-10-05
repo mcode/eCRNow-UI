@@ -34,6 +34,10 @@ class PublicHealthAuthority extends Component {
             this.state.authType = this.selectedPublicHealthAuthority.authType;
             this.state.clientId = this.selectedPublicHealthAuthority.clientId;
             this.state.clientSecret = this.selectedPublicHealthAuthority.clientSecret;
+
+            this.state.username = this.selectedPublicHealthAuthority.username;
+            this.state.password = this.selectedPublicHealthAuthority.password;
+
             this.state.fhirServerBaseURL = this.selectedPublicHealthAuthority.fhirServerBaseURL;
             this.state.tokenEndpoint = this.selectedPublicHealthAuthority.tokenUrl;
             this.state.scopes = this.selectedPublicHealthAuthority.scopes;
@@ -120,6 +124,8 @@ class PublicHealthAuthority extends Component {
             authType: this.state.authType,
             clientId: this.state.clientId,
             clientSecret: this.state.clientSecret && this.state.authType === 'SofSystem' ? this.state.clientSecret : null,
+            username: this.state.username,
+            password: this.state.password,
             fhirServerBaseURL: this.state.fhirServerBaseURL,
             tokenUrl: this.state.tokenEndpoint ? this.state.tokenEndpoint : null,
             scopes: this.state.scopes,
@@ -173,6 +179,8 @@ class PublicHealthAuthority extends Component {
                         authType: "SofProvider",
                         clientId: "",
                         clientSecret: "",
+                        username: "",
+                        password: "",
                         fhirServerBaseURL: "",
                         tokenEndpoint: "",
                         scopes: "",
@@ -315,6 +323,32 @@ class PublicHealthAuthority extends Component {
                                                 </Form.Group>
                                             ) : ''}
 
+
+                                            <Form.Group as={Row} controlId="formHorizontalUsername">
+                                                <Form.Label column sm={2}>
+                                                    Username:
+                                                </Form.Label>
+                                                <Col sm={10}>
+                                                    <Form.Control type="text" placeholder="Username" name="username" onChange={e => this.handleChange(e)} value={this.state.username} />
+                                                    <Form.Control.Feedback type="invalid">
+                                                        Please provide a Username.
+                                                    </Form.Control.Feedback>
+                                                </Col>
+                                            </Form.Group>
+
+
+                                            <Form.Group as={Row} controlId="formHorizontalPassword">
+                                                <Form.Label column sm={2}>
+                                                    Password:
+                                                </Form.Label>
+                                                <Col sm={10}>
+                                                    <Form.Control type="password" placeholder="Password" name="password" onChange={e => this.handleChange(e)} value={this.state.password} />
+                                                    <Form.Control.Feedback type="invalid">
+                                                        Please provide a Password.
+                                                    </Form.Control.Feedback>
+                                                </Col>
+                                            </Form.Group>
+
                                             <Form.Group as={Row} controlId="formHorizontalScopes">
                                                 <Form.Label column sm={2}>
                                                     Scopes:
@@ -344,7 +378,7 @@ class PublicHealthAuthority extends Component {
                                                         Token Endpoint:
                                                     </Form.Label>
                                                     <Col sm={10}>
-                                                        <Form.Control type="text" placeholder="Token Endpoint" name="tokenEndpoint" required={this.state.launchType === 'systemLaunch' ? true : false} onChange={e => this.handleChange(e)} value={this.state.tokenEndpoint} isInvalid={this.state.isValidated && (this.state.tokenEndpoint === '' || this.state.tokenEndpoint === undefined)}/>
+                                                        <Form.Control type="text" placeholder="Token Endpoint" name="tokenEndpoint" required={this.state.launchType === 'systemLaunch' ? true : false} onChange={e => this.handleChange(e)} value={this.state.tokenEndpoint} />
 
                                                         <Form.Control.Feedback type="invalid">
                                                             Please provide a FHIR Server Token URL.
