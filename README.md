@@ -9,7 +9,7 @@ The following technologies should have been installed on your machine where you 
 
 ### Clone the repository
 
-```git clone https://github.com/drajer-health/eCRNow-UI.git```
+```git clone https://github.com/mcode/eCRNow-UI.git```
 
 ### Build and Run the Application
 
