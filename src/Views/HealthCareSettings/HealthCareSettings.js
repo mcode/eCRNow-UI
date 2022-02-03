@@ -729,7 +729,7 @@ class HealthCareSettings extends Component {
                                                         </Form.Control.Feedback>
                                                     </Col>
                                                 </Form.Group>
-                                            
+                                                ) : ''}
                                         </Card.Body>
                                     </Accordion.Collapse>
                                 </Card>

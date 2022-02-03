@@ -409,7 +409,7 @@ class Authorizations extends Component {
   }
 
   render() {
-    const setShow = () => this.setState({ isAuthorized: false });
+    const setShow = () => this.setState({ isAuthorized: true });
     return (
       <div className="authorizations">
         <Alert
