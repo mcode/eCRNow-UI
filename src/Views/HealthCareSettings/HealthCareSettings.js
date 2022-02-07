@@ -324,6 +324,7 @@ class HealthCareSettings extends Component {
     };
 
     saveHealthCareSettings() {
+        debugger
         console.log("clicked");
         console.log(this.selectedHealthCareSettings);
         console.log(this.state.xdrRecipientAddress);
@@ -349,7 +350,7 @@ class HealthCareSettings extends Component {
             assigningAuthorityId : this.state.assigningAuthorityId?this.state.assigningAuthorityId:null,
             encounterStartThreshold: this.state.startThreshold,
             encounterEndThreshold: this.state.endThreshold,
-            subscriptionsEnabled: this.state.SubscriptionsEnabled,
+            subscriptionsEnabled: this.state.subscriptionsEnabled,
             trustedThirdParty: this.state.trustedThirdParty,
             orgName: this.state.orgName ? this.state.orgName : null,
             orgIdSystem: this.state.orgIdSystem,
@@ -684,8 +685,8 @@ class HealthCareSettings extends Component {
                                                 <Col sm={10}>
                                                     <Row>
                                                         <Col sm={4}>
-                                                            <Form.Check type="checkbox" id="providerLaunch">
-                                                                <Form.Check.Input type="checkbox" value={this.state.subscriptionsEnabled} onChange={e => this.setState( (prevState) => {return {subscriptionsEnabled: !prevState.subscriptionsEnabled}})} />
+                                                            <Form.Check  name="subscriptionsEnabled"  type="checkbox" id="subscriptionsEnabled">
+                                                                <Form.Check.Input type="checkbox" checked={this.state.subscriptionsEnabled} value={this.state.subscriptionsEnabled} onChange={e => this.setState( (prevState) => {return {subscriptionsEnabled: !prevState.subscriptionsEnabled}})} />
                                                             </Form.Check>
                                                         </Col>
                                                     </Row>
